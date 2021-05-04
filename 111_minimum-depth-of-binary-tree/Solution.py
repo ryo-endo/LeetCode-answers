@@ -8,12 +8,13 @@ class TreeNode:
 
 class Solution:
     def minDepth(self, root: TreeNode) -> int:
-        def countNode(node: TreeNode):
-            if not node:
-                return None
-            if not node.left and not node.right:
-                return 1
+        if not root:
+            return 0
+        if not root.left and not root.right:
+            return 1
+        if not root.left:
+            return 1 + self.minDepth(root.right)
+        if not root.right:
+            return 1 + self.minDepth(root.left)
 
-            return 1 + min(i for i in [countNode(node.left), countNode(node.right)] if i is not None)
-
-        return countNode(root) or 0
+        return 1 + min(self.minDepth(root.left), self.minDepth(root.right))
