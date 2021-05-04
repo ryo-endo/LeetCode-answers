@@ -3,20 +3,15 @@ from typing import List
 
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        result = []
+        result = [[1]]
 
-        prev_row = [1]
-        result.append(prev_row)
-
-        for _ in range(numRows - 1):
-            row = []
-
-            row.append(prev_row[0])
-            for i in range(len(prev_row) - 1):
-                row.append(prev_row[i] + prev_row[i + 1])
-            row.append(prev_row[-1])
-
+        for numRow in range(1, numRows):
+            # 行の先頭は常に1
+            row = [1]
+            for i in range(numRow - 1):
+                row.append(result[-1][i] + result[-1][i + 1])
+            # 行の末尾は常に1
+            row.append(1)
             result.append(row)
-            prev_row = row
 
         return result
