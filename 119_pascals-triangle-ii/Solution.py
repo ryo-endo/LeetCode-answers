@@ -8,8 +8,4 @@ class Solution:
             # nCk = n! / k!*(n-k)!
             return int(math.factorial(n) / (math.factorial(k) * math.factorial(n - k)))
 
-        result = []
-        for i in range(rowIndex + 1):
-            result.append(comb(rowIndex, i))
-
-        return result
+        return [comb(rowIndex, i) for i in range(rowIndex + 1)]
