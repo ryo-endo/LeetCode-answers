@@ -3,13 +3,16 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        max_profit = 0
+        total_profit = 0
+        last_price = prices[0]
         profit = 0
-        for i, start in enumerate(prices):
-            for j, end in enumerate(prices[i + 1:]):
-                if (sale := end - start) <= 0:
-                    continue
-                profit = max(profit, sale + self.maxProfit(prices[i + j + 2:]))
-                max_profit = max(max_profit, profit)
+        for price in prices[1:]:
+            if price < last_price:
+                last_price = price
+                continue
+            profit += price - last_price
+            last_price = price
+            total_profit += profit
+            profit = 0
 
-        return max_profit
+        return total_profit
