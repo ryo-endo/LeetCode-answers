@@ -10,6 +10,14 @@
   "author": "ryo-endo",
   "license": "MIT",
   "devDependencies": {
-    "jest": "^29.3.1"
-  }
+    "@types/jest": "^29.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint": "^8.28.0",
+    "jest": "^29.3.1",
+    "prettier": "2.8.0",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {}
 }
